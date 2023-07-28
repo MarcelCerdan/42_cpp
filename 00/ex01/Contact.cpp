@@ -6,7 +6,7 @@
 /*   By: mthibaul <mthibaul@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 19:50:38 by mthibaul          #+#    #+#             */
-/*   Updated: 2023/07/27 21:48:15 by mthibaul         ###   ########.fr       */
+/*   Updated: 2023/07/28 13:42:40 by mthibaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,18 @@ void	Contact::setDarkestSecret( std::string darkest_secret ) {
 	this->darkest_secret = darkest_secret;
 }
 
-void	printInfos() {
+std::string	Contact::getDarkestSecret() {
+	return(this->darkest_secret);
+}
 
-	std::cout << std::setw(10);
-	std::cout << 
+void	Contact::printInfos() {
+
+	std::cout << std::endl;
+	std::cout << "First name : " << Contact::getFirstName() << std::endl;
+	std::cout << "Last name : " << Contact::getLastName() << std::endl;
+	std::cout << "Nickname : " << Contact::getNickname() << std::endl;
+	std::cout << "Phone number : " << Contact::getPhoneNumber() << std::endl;
+	std::cout << "Darkeset secret : " << Contact::getDarkestSecret() << std::endl;
 
 }
 

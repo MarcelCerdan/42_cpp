@@ -6,7 +6,7 @@
 /*   By: mthibaul <mthibaul@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 19:35:17 by mthibaul          #+#    #+#             */
-/*   Updated: 2023/07/27 21:47:48 by mthibaul         ###   ########.fr       */
+/*   Updated: 2023/07/28 11:17:18 by mthibaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ public:
 	void		setPhoneNumber(std::string);
 	std::string	getPhoneNumber();
 	void		setDarkestSecret(std::string);
+	std::string	getDarkestSecret();
 	void		printInfos();
 };
 

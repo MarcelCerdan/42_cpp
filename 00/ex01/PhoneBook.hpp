@@ -6,7 +6,7 @@
 /*   By: mthibaul <mthibaul@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 20:06:21 by mthibaul          #+#    #+#             */
-/*   Updated: 2023/07/27 21:47:28 by mthibaul         ###   ########.fr       */
+/*   Updated: 2023/07/28 13:29:38 by mthibaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,9 @@ public:
 	PhoneBook();
 	~PhoneBook();
 	
-	void addContact();
-	void searchContact();
+	void	addContact();
+	int		searchContact();
+	void	printContact();
 	
 };
 

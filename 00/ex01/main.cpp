@@ -6,7 +6,7 @@
 /*   By: mthibaul <mthibaul@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 21:13:44 by mthibaul          #+#    #+#             */
-/*   Updated: 2023/07/27 21:44:14 by mthibaul         ###   ########.fr       */
+/*   Updated: 2023/07/28 13:30:56 by mthibaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,10 @@ SEARCH a contact or EXIT your PhoneBook." << std::endl << std::endl;
 		if (input == "ADD")
 			phoneBook.addContact();
 		else if (input == "SEARCH")
-			phoneBook.searchContact();
+		{
+			if (phoneBook.searchContact())
+				phoneBook.printContact();
+		}
 		else if (input == "EXIT")
 			return (0);
 		else
