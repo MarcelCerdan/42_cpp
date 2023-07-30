@@ -4,7 +4,7 @@
 
 # ---- Final Executable --- #
 
-NAME		=	weapons
+NAME		=	sed
 
 # ---- Directories ---- #
 
@@ -16,10 +16,7 @@ DIR_HEAD 	=	./
 
 # ---- Files ---- #
 
-SRCS_LST 	= 	main.cpp \
-				Weapon.cpp \
-				HumanA.cpp \
-				HumanB.cpp
+SRCS_LST 	= 	main.cpp
 
 OBJS 		= 	$(addprefix $(DIR_OBJS), $(SRCS_LST:.cpp=.o))
 

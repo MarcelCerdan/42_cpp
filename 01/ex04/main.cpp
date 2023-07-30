@@ -6,18 +6,21 @@
 /*   By: mthibaul <mthibaul@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 00:29:34 by mthibaul          #+#    #+#             */
-/*   Updated: 2023/07/29 00:50:16 by mthibaul         ###   ########.fr       */
+/*   Updated: 2023/07/30 18:27:39 by mthibaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <fstream>
 
-void	printInOfs(std::string filename, std::string s1, std::string s2);
+void		replaceInput(std::ifstream &ifs, std::ofstream &ofs, std::string s1, std::string s2);
+std::string	getInputContent(std::ifstream &ifs);
 
 int	main(int ac, char **av) {
 
 	std::ifstream	ifs(av[1]);
+	std::ofstream	ofs;
+	std::string		outputName;
 
 	if (ac != 4)
 	{
@@ -26,21 +29,44 @@ int	main(int ac, char **av) {
 	}
 	if (!ifs.good())
 	{
-		std::cerr << "Incorrect file name." << std::endl;
+		std::cerr << "Input file cannot be opened." << std::endl;
 		return (2);
 	}
-	printInOfs(av[1], av[2], av[3]);
-	
+	outputName = av[1];
+	outputName += ".replace";
+	ofs.open(outputName.c_str());
+	if (!ofs.good())
+	{
+		std::cerr << "Output file cannot be opened." << std::endl;
+		return (2);
+	}
+	replaceInput(ifs, ofs, av[2], av[3]);
 }
 
-void	printInOfs(std::string filename, std::string s1, std::string s2) {
+void	replaceInput(std::ifstream &ifs, std::ofstream &ofs, std::string s1, std::string s2) {
+	
+	std::string	inputContent;
+	size_t		pos;
 
-	std::ifstream	ifs(filename);
-	std::ofstream	ofs(filename + ".replace");
-	char			*buffer;
-
-	while (!ifs.eof())
+	(void)ofs;
+	inputContent = getInputContent(ifs);
+	pos = inputContent.find(s1);
+	while (pos != std::string::npos)
 	{
-		ifs.getline(buffer, 1);
+		inputContent.erase(pos, s1.size());
+		inputContent.insert(pos, s2);
+		pos += s2.size();
+		pos = inputContent.find(s1, pos);
 	}
+	ofs << inputContent;
+}
+
+std::string	getInputContent(std::ifstream &ifs) {
+
+	char		buf;
+	std::string	buffer;
+
+	while (ifs.get(buf))
+		buffer += buf;
+	return (buffer);
 }
