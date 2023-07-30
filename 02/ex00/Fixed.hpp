@@ -1,36 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Harl.hpp                                           :+:      :+:    :+:   */
+/*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mthibaul <mthibaul@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/30 18:37:28 by mthibaul          #+#    #+#             */
-/*   Updated: 2023/07/30 23:53:25 by mthibaul         ###   ########.fr       */
+/*   Created: 2023/07/31 00:22:24 by mthibaul          #+#    #+#             */
+/*   Updated: 2023/07/31 00:54:53 by mthibaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HARL_H
-# define HARL_H
+#ifndef FIXED_H
+# define FIXED_H
 
-# include <iostream>
+#include <iostream>
 
-class Harl {
-
-	public:
-
-	Harl();
-	~Harl();
-
-	void complain( std::string level );
+class Fixed {
 
 	private:
+	
+	int					_value;
+	static int const	_fractionalBits = 8;
+	
+	public:
+	
+	Fixed();
+	Fixed(Fixed const &src);
+	~Fixed();
 
-	void debug( void );
-	void info( void );
-	void warning( void );
-	void error( void );
+	Fixed	&operator=(Fixed const &number);
 
+	int		getRawBits() const;
+	void	setRawBits(int const raw);
+	
 };
 
 #endif

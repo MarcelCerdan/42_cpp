@@ -6,9 +6,12 @@
 /*   By: mthibaul <mthibaul@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 18:37:28 by mthibaul          #+#    #+#             */
-/*   Updated: 2023/07/30 19:12:23 by mthibaul         ###   ########.fr       */
+/*   Updated: 2023/07/30 23:53:54 by mthibaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef HARL_H
+# define HARL_H
 
 #include <iostream>
 
@@ -29,3 +32,5 @@ class Harl {
 	void error( void );
 
 };
+
+#endif
