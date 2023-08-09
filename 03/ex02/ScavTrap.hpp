@@ -6,7 +6,7 @@
 /*   By: mthibaul <mthibaul@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 16:37:44 by mthibaul          #+#    #+#             */
-/*   Updated: 2023/08/10 00:01:59 by mthibaul         ###   ########.fr       */
+/*   Updated: 2023/08/10 00:11:06 by mthibaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "ClapTrap.hpp"
 
-class ScavTrap : ClapTrap {
+class ScavTrap : public ClapTrap {
 
 	private:
 
