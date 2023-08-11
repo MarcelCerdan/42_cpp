@@ -6,24 +6,24 @@
 /*   By: mthibaul <mthibaul@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 15:41:16 by mthibaul          #+#    #+#             */
-/*   Updated: 2023/08/11 11:03:42 by mthibaul         ###   ########.fr       */
+/*   Updated: 2023/08/11 11:54:49 by mthibaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
-#include "ClapTrap.hpp"
+#include "FragTrap.hpp"
+#include "DiamondTrap.hpp"
 
 int	main() {
 
-	ClapTrap Marcel("Marcel");
-	ScavTrap Bill("Bill");
-	ScavTrap Bill2(Bill);
+	DiamondTrap Marcel("Marcel");
+	DiamondTrap Bill("Bill");
+	DiamondTrap Bill2 = Bill;
 
 	std::cout << std::endl;
 	
 	Marcel.attack("Bill");
 	Bill.takeDamage(0);
-	Bill2.attack("Marcel");
 
 	std::cout << std::endl;
 		
@@ -32,13 +32,8 @@ int	main() {
 	Marcel.attack("Bill");
 
 	std::cout << std::endl;
-	
-	Bill.takeDamage(5);
-	Bill.takeDamage(50);
-	Bill.takeDamage(50);
-	Bill.beRepaired(5);
-	Bill.beRepaired(2);
-	Bill.guardGate();
+
+	Marcel.whoAmI();
 
 	std::cout << std::endl;
 }

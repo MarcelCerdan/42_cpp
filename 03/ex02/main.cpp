@@ -6,12 +6,13 @@
 /*   By: mthibaul <mthibaul@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 15:41:16 by mthibaul          #+#    #+#             */
-/*   Updated: 2023/08/10 00:11:45 by mthibaul         ###   ########.fr       */
+/*   Updated: 2023/08/11 11:03:58 by mthibaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
 #include "FragTrap.hpp"
+#include "ClapTrap.hpp"
 
 int	main() {
 
