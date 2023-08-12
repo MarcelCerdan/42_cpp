@@ -6,7 +6,7 @@
 /*   By: mthibaul <mthibaul@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 10:05:35 by mthibaul          #+#    #+#             */
-/*   Updated: 2023/08/12 10:35:14 by mthibaul         ###   ########.fr       */
+/*   Updated: 2023/08/12 10:53:52 by mthibaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ class Animal {
 
 	Animal();
 	Animal(Animal const &src);
-	~Animal();
+	virtual ~Animal();
 
 	Animal &operator=(Animal const &rhs);
 

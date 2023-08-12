@@ -6,7 +6,7 @@
 /*   By: mthibaul <mthibaul@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 10:23:29 by mthibaul          #+#    #+#             */
-/*   Updated: 2023/08/12 10:49:27 by mthibaul         ###   ########.fr       */
+/*   Updated: 2023/08/12 10:53:12 by mthibaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,10 @@ int main()
 	k->makeSound();
 	wrong->makeSound();
 	
+	delete meta;
+	delete j;
+	delete i;
+	delete k;
+	delete wrong;
 	return 0;
 }
