@@ -28,6 +28,7 @@ Cat::Cat(Cat const &src) : Animal(src) {
 Cat::~Cat() {
 
 	std::cout << "Default Cat destructor called." << std::endl;
+	this->_brain = NULL;
 	delete this->_brain;
 }
 
@@ -38,8 +39,11 @@ void	Cat::makeSound() const {
 
 Cat	&Cat::operator=(Cat const &rhs) {
 
-	this->type = rhs.type;
-	this->_brain->operator=(*rhs._brain);
+	if (this != &rhs)
+	{
+		this->type = rhs.type;
+		delete this->_brain;
+		this->_brain = new Brain(*rhs._brain);
+	}
 	return (*this);
-
 }
