@@ -13,7 +13,7 @@
 # define ICE_HPP
 
 # include "AMateria.hpp"
-# include "Character.hpp"
+# include "ICharacter.hpp"
 
 class Ice : public AMateria {
 

@@ -11,16 +11,57 @@
 /* ************************************************************************** */
 #include "MateriaSource.hpp"
 
-MateriaSource::MateriaSource() { return ; }
+MateriaSource::MateriaSource() {
 
-MateriaSource::MateriaSource(const AMateria &src) {
+	for (int i = 0; i < 4; i++)
+		_inventory[i] = NULL;
+}
+
+MateriaSource::MateriaSource(const MateriaSource &src) {
+	for (int i = 0; i < 4; i++)
+		_inventory[i] = NULL;
 	*this = src;
 }
 
-MateriaSource::~MateriaSource() { return ; }
+MateriaSource::~MateriaSource() {
 
-MateriaSource	&MateriaSource::operator=(const AMateria &src) { return ; }
+	for (int i = 0; i < 4; i++)
+		delete this->_inventory[i];
+}
 
-void	MateriaSource::learnMateria(AMateria *) {
-	
+MateriaSource	&MateriaSource::operator=(const MateriaSource &src) {
+
+	if (this != &src)
+	{
+		for (int i = 0; i < 4; i++)
+		{
+			delete this->_inventory[i];
+			this->_inventory[i] = src._inventory[i];
+		}
+	}
+	return (*this);
+}
+
+void	MateriaSource::learnMateria(AMateria *m) {
+
+	for (int i = 0; i < 4; i++)
+	{
+		if (!this->_inventory[i])
+		{
+			this->_inventory[i] = m;
+			return ;
+		}
+	}
+	std::cout << "MateriaSource's inventory is full." << std::endl;
+}
+
+AMateria	*MateriaSource::createMateria(const std::string &type) {
+
+	for (int i = 0; i < 4; i++)
+	{
+		if (this->_inventory[i]->getType() == type)
+			return (this->_inventory[i]->clone());
+	}
+	std::cout << "This type doesn't exist." << std::endl;
+	return (0);
 }

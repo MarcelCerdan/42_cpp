@@ -11,12 +11,22 @@
 /* ************************************************************************** */
 #include "Character.hpp"
 
-Character::Character() : name("Marcel") { return ;}
+Character::Character() : name("Marcel") {
 
-Character::Character(std::string name) : name(name) { return ; }
+	for (int i = 0; i < 4; i++)
+		inventory[i] = NULL;
+}
+
+Character::Character(std::string name) : name(name) {
+
+	for (int i = 0; i < 4; i++)
+		inventory[i] = NULL;
+}
 
 Character::Character(const Character &src) {
 
+	for (int i = 0; i < 4; i++)
+		inventory[i] = NULL;
 	*this = src;
 }
 
@@ -28,9 +38,14 @@ Character::~Character() {
 
 Character	&Character::operator=(const Character &rhs) {
 
-	this->name = rhs.name;
-	for (int i = 0; i < 4; i++)
-		this->inventory[i] = rhs.inventory[i];
+	if (this != &rhs)
+	{
+		for (int i = 0; i < 4; i++)
+		{
+			delete this->inventory[i];
+			this->inventory[i] = rhs.inventory[i]->clone();
+		}
+	}
 	return (*this);
 }
 
@@ -49,7 +64,7 @@ void	Character::equip(AMateria *m) {
 			return ;
 		}
 	}
-	std::cout << this->name << " inventory is full." << std::endl;
+	std::cout << this->name << "'s inventory is full." << std::endl;
 }
 
 void	Character::unequip(int idx) {

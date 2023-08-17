@@ -16,6 +16,7 @@
 # include "Cure.hpp"
 # include "ICharacter.hpp"
 
+
 class	Character : public ICharacter {
 
 	protected:

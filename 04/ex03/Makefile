@@ -4,7 +4,7 @@
 
 # ---- Final Executable --- #
 
-NAME		=	abstract
+NAME		=	materias
 
 # ---- Directories ---- #
 
@@ -20,7 +20,8 @@ SRCS_LST 	= 	main.cpp \
 				AMateria.cpp \
 				Character.cpp \
 				Cure.cpp \
-				Ice.cpp
+				Ice.cpp \
+				MateriaSource.cpp
 
 OBJS 		= 	$(addprefix $(DIR_OBJS), $(SRCS_LST:.cpp=.o))
 
