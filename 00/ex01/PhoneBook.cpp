@@ -15,6 +15,7 @@
 void	printColumns();
 void	printInfoColumn(std::string str);
 bool	isNumber(std::string str);
+int		getInput(std::string print, std::string &input);
 
 PhoneBook::PhoneBook() {
 	this->contactsAdded = 0;
@@ -22,29 +23,30 @@ PhoneBook::PhoneBook() {
 
 PhoneBook::~PhoneBook() { return ;}
 
-void	PhoneBook::addContact() {
+int	PhoneBook::addContact() {
 	
 	Contact		newContact;
 	std::string	input;
-	
+
 	std::cout << std::endl << "Please input the contact's informations" <<  std::endl;
-	std::cout << "First name : ";
-	std::cin >> input;
+	if (getInput("First name : ", input) == -1)
+		return (-1);
 	newContact.setFirstName(input);
-	std::cout << "Last name : ";
-	std::cin >> input;
+	if (getInput("Last name : ", input) == -1)
+		return (-1);
 	newContact.setLastName(input);
-	std::cout << "Nickname : ";
-	std::cin >> input;
+	if (getInput("Nickname : ", input) == -1)
+		return (-1);
 	newContact.setNickname(input);
-	std::cout << "Phone number : ";
-	std::cin >> input;
+	if (getInput("Phone number : ", input) == -1)
+		return (-1);
 	newContact.setPhoneNumber(input);
-	std::cout << "Darkest Secret : ";
-	std::cin >> input;
+	if (getInput("Darkest Secret : ", input) == -1)
+		return (-1);
 	newContact.setDarkestSecret(input);
 	this->contacts[this->contactsAdded % 8] = newContact;
 	this->contactsAdded++;
+	return (0);
 }
 
 int	PhoneBook::searchContact() {
@@ -101,12 +103,11 @@ void	PhoneBook::printContact() {
 	std::string input;
 
 	std::cout << std::endl << "Input the index of the contact you want to display : ";
-	std::cin >> input;
+	std::getline(std::cin, input);
 	if (isNumber(input) && (input[0] - 48 <= this->contactsAdded % 8) )
 		this->contacts[input[0] - 49].printInfos();
 	else if (!std::cin.eof()) {
-		std::cout << "Invalid index. Please input a valid number between 1 and ";
-		std::cout << this->contactsAdded % 8 << "." << std::endl;
+		std::cout << "Invalid index. Please input a valid number." << std::endl;
 		this->printContact();
 	}
 }
@@ -116,4 +117,19 @@ bool	isNumber(std::string str) {
 	if (str[0] <= 57 && str[0] > 48 && str.size() == 1)
 		return (true);
 	return (false);
+}
+
+int	getInput(std::string print, std::string &input)
+{
+	std::cout << print;
+	input = "";
+	std::getline(std::cin, input);
+	if (input.empty())
+		return (-1);
+	for (unsigned i = 0; i < input.size(); i++)
+	{
+		if (!isspace(input[i]))
+			return (0);
+	}
+	return (getInput(print, input));
 }

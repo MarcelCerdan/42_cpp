@@ -14,6 +14,8 @@
 # define PHONE_BOOK_H
 
 # include "Contact.hpp"
+# include <limits>
+# include <ios>
 
 class PhoneBook {
 	
@@ -27,7 +29,7 @@ public:
 	PhoneBook();
 	~PhoneBook();
 	
-	void	addContact();
+	int		addContact();
 	int		searchContact();
 	void	printContact();
 	

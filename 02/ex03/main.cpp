@@ -16,18 +16,18 @@ bool	bsp( Point const a, Point const b, Point const c, Point const point);
 
 int	main() {
 
-	Point 	a(1, 1);
-	Point	b(3, 5);
-	Point	c(11, 0);
-	Point	inside(0, 0);
+	Point 	a(1.1f, 1.1f);
+	Point	b(1, 2);
+	Point	c(2, 1);
+	Point	inside(0.5, 1);
 	Point	outside(3, 2);
 	Point	on(5, 1);
 		
-	if (bsp(a, b, c, inside) == true)
+	if (bsp(a, b, c, a) == true)
 		std::cout << "Inside" << std::endl;
 	else
 		std::cout << "Outside" << std::endl;
-	if (bsp(a, b, c, outside) == true)
+	if (bsp(a, b, c, inside) == true)
 		std::cout << "Inside" << std::endl;
 	else
 		std::cout << "Outside" << std::endl;

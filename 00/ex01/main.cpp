@@ -20,11 +20,14 @@ int	main() {
 	std::cout << "My PhoneBook" << std::endl;
 	while (!std::cin.eof())
 	{
-		std::cout << std::endl << "Please chose if you wish to ADD a contact, \
-SEARCH a contact or EXIT your PhoneBook." << std::endl << std::endl;
-		std::cin >> input;
+		std::cout << std::endl << "Please chose if you wish to ADD a contact, "
+				<< "SEARCH a contact or EXIT your PhoneBook." << std::endl << std::endl;
+		std::getline(std::cin, input);
 		if (input == "ADD")
-			phoneBook.addContact();
+		{
+			if (phoneBook.addContact() == -1)
+				return (-1);
+		}
 		else if (input == "SEARCH")
 		{
 			if (phoneBook.searchContact())
@@ -32,7 +35,7 @@ SEARCH a contact or EXIT your PhoneBook." << std::endl << std::endl;
 		}
 		else if (input == "EXIT")
 			return (0);
-		else
+		else if (!input.empty())
 			std::cout << std::endl << "Invalid command" << std::endl;
 	}
 	return (0);
