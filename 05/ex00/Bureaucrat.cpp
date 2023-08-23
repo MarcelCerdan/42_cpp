@@ -13,10 +13,14 @@
 
 Bureaucrat::Bureaucrat() : name("Karen"), grade(150) { return ; }
 
-Bureaucrat::Bureaucrat(std::string name, int grade) : name(name), grade(grade) {
+Bureaucrat::Bureaucrat(std::string name, int grade) : name(name) {
 
 	if (grade > 150)
-		throw
+		throw GradeTooLowException();
+	else if (grade < 1)
+		throw GradeTooHighException();
+	else
+		this->grade = grade;
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat &other) {
@@ -26,12 +30,12 @@ Bureaucrat::Bureaucrat(const Bureaucrat &other) {
 
 Bureaucrat::~Bureaucrat() { return ; }
 
-std::string Bureaucrat::getName() {
+std::string Bureaucrat::getName() const {
 
 	return (this->name);
 }
 
-int Bureaucrat::getGrade() {
+int Bureaucrat::getGrade() const {
 
 	return (this->grade);
 }
@@ -48,7 +52,13 @@ void Bureaucrat::decrement() {
 
 Bureaucrat &Bureaucrat::operator=(const Bureaucrat &other) {
 
-	this->name = other.name;
-	this->grade = other.grade;
+	if (this != &other)
+		this->grade = other.grade;
 	return (*this);
+}
+
+std::ostream	&operator<<(std::ostream &os, Bureaucrat const &b) {
+
+	os << b.getName() << ", bureaucrat grade " << b.getGrade() << std::endl;
+	return os;
 }
