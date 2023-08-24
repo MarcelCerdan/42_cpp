@@ -14,6 +14,11 @@
 
 Zombie* zombieHorde( int N, std::string name ) {
 
+	if (N <= 0)
+	{
+		std::cout << "Incorrect number of zombies" << std::endl;
+		return (NULL);
+	}
 	Zombie*	zombies = new Zombie[N];
 	int		i = 0;
 
@@ -22,6 +27,5 @@ Zombie* zombieHorde( int N, std::string name ) {
 		zombies[i].setName(name);
 		i++;
 	}
-	
 	return (zombies);
 }

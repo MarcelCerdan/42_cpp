@@ -107,7 +107,7 @@ void	PhoneBook::printContact() {
 	if (isNumber(input) && (input[0] - 48 <= this->contactsAdded % 8) )
 		this->contacts[input[0] - 49].printInfos();
 	else if (!std::cin.eof()) {
-		std::cout << "Invalid index. Please input a valid number." << std::endl;
+		std::cout << std::endl << "Invalid index. Please input a valid number." << std::endl;
 		this->printContact();
 	}
 }
@@ -123,9 +123,10 @@ int	getInput(std::string print, std::string &input)
 {
 	std::cout << print;
 	input = "";
+	std::cin >> std::ws;
 	std::getline(std::cin, input);
 	if (input.empty())
-		return (-1);
+		return (getInput(print, input));
 	for (unsigned i = 0; i < input.size(); i++)
 	{
 		if (!isspace(input[i]))

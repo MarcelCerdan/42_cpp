@@ -14,16 +14,16 @@
 
 int	main() {
 
-	std::string		str = "HI THIS IS BRAIN";
-	std::string*	strPTR = &str;
-	std::string&	strREF = str;
+	std::string		string = "HI THIS IS BRAIN";
+	std::string*	stringPTR = &string;
+	std::string&	stringREF = string;
 
-	std::cout << "str : " << &str << std::endl
-			<< "strPTR : " << strPTR << std::endl
-			<< "strREF : " << &strREF << std::endl << std::endl
-			<< "str : " << str << std::endl
-			<< "strPTR : " << *strPTR << std::endl
-			<< "strREF : " << strREF << std::endl ;
+	std::cout << "string : " << &string << std::endl
+			<< "stringPTR : " << stringPTR << std::endl
+			<< "stringREF : " << &stringREF << std::endl << std::endl
+			<< "string : " << string << std::endl
+			<< "stringPTR : " << *stringPTR << std::endl
+			<< "stringREF : " << stringREF << std::endl ;
 
 	return 0;
 }

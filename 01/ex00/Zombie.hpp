@@ -23,7 +23,7 @@ class Zombie {
 	Zombie();
 	~Zombie();
 
-	void	annonce();
+	void	announce();
 	
 	private:
 

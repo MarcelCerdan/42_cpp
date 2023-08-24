@@ -4,7 +4,7 @@
 
 # ---- Final Executable --- #
 
-NAME		=	zombieHorde
+NAME		=	form
 
 # ---- Directories ---- #
 
@@ -16,9 +16,9 @@ DIR_HEAD 	=	./
 
 # ---- Files ---- #
 
-SRCS_LST 	= 	Zombie.cpp \
-				zombieHorde.cpp \
-				main.cpp
+SRCS_LST 	= 	main.cpp \
+				Bureaucrat.cpp \
+				Form.cpp
 
 OBJS 		= 	$(addprefix $(DIR_OBJS), $(SRCS_LST:.cpp=.o))
 

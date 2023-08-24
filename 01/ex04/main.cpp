@@ -48,7 +48,6 @@ void	replaceInput(std::ifstream &ifs, std::ofstream &ofs, std::string s1, std::s
 	std::string	inputContent;
 	size_t		pos;
 
-	(void)ofs;
 	inputContent = getInputContent(ifs);
 	pos = inputContent.find(s1);
 	while (pos != std::string::npos)

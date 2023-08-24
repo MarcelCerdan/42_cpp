@@ -30,7 +30,7 @@ Zombie::~Zombie() {
 	
 }
 
-void	Zombie::annonce() {
+void	Zombie::announce() {
 
 	std::cout << this->name
 			<< " : BraiiiiiiinnnzzzZ..."

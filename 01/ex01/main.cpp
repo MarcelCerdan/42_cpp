@@ -14,13 +14,16 @@
 
 int main() {
 
-	Zombie*	zombies;
-	int		i = 0;
+	int n = 5;
+	int i = 0;
 
-	zombies = zombieHorde(15, "Johnny");
-	while (i < 15)
+	Zombie*	zombies = zombieHorde(n, "Johnny");
+	if (!zombies)
+		return (0);
+
+	while (i < n)
 	{
-		zombies[i].annonce();
+		zombies[i].announce();
 		i++;
 	}
 	delete [] zombies;

@@ -4,7 +4,7 @@
 
 # ---- Final Executable --- #
 
-NAME		=	HarlFilter
+NAME		=	harlFilter
 
 # ---- Directories ---- #
 

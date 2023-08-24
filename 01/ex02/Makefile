@@ -4,7 +4,7 @@
 
 # ---- Final Executable --- #
 
-NAME		=	references
+NAME		=	hiThisIsBrain
 
 # ---- Directories ---- #
 
