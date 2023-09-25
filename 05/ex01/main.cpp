@@ -19,11 +19,12 @@ int	main() {
 		Bureaucrat b("Bob", 140);
 		Form form("A38", 15, 3);
 
-		std::cout << a;
-		std::cout << b;
-		std::cout << form;
+		std::cout << a << std::endl;
+		std::cout << b << std::endl;
+		std::cout << form << std::endl;
 
 		form.beSigned(&a);
+		std::cout << std::endl;
 		form.beSigned(&b);
 	}
 	catch (Form::GradeTooLowException &e) {
