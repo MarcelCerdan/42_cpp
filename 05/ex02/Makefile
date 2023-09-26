@@ -18,7 +18,10 @@ DIR_HEAD 	=	./
 
 SRCS_LST 	= 	main.cpp \
 				Bureaucrat.cpp \
-				Form.cpp
+				AForm.cpp \
+				ShrubberyCreationForm.cpp \
+				RobotomyRequestForm.cpp \
+				PresidentialPardonForm.cpp
 
 OBJS 		= 	$(addprefix $(DIR_OBJS), $(SRCS_LST:.cpp=.o))
 
@@ -27,7 +30,7 @@ DEPS		=	$(OBJS:.o=.d)
 
 # ---- Compilation ---- #
 
-CC		=	c++
+CC		=	g++
 CFLAGS	=	-Wall -Wextra -Werror -std=c++98
 
 # ---- Commands ---- #

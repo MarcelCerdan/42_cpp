@@ -54,7 +54,6 @@ void Form::beSigned(Bureaucrat *b) {
 		this->isSigned = true;
 	else
 		throw GradeTooLowException();
-	b->signForm(this);
 }
 
 Form &Form::operator=(const Form &other) {

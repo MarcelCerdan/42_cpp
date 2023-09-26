@@ -10,36 +10,43 @@
 /*                                                                            */
 /* ************************************************************************** */
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
 int	main() {
 
 	try {
 		Bureaucrat a("Michel", 10);
-		Bureaucrat b("Bob", 140);
-		Form form("A38", 15, 3);
+		Bureaucrat b("Bob", 2);
+		AForm *form;
 
-		std::cout << a;
-		std::cout << b;
-		std::cout << form;
+		form = new ShrubberyCreationForm("./here");
+		a.signForm(form);
+		form->execute(a);
+		delete form;
 
-		form.beSigned(&a);
-		form.beSigned(&b);
+		std::cout << std::endl;
+
+		form = new RobotomyRequestForm("Francis");
+		//a.signForm(form);
+		form->execute(a);
+		delete form;
+
+		std::cout << std::endl;
+
+		form = new PresidentialPardonForm("Bruce Wayne");
+		a.signForm(form);
+		form->execute(b);
+		delete form;
 	}
-	catch (Form::GradeTooLowException &e) {
+	catch (AForm::GradeTooLowException &e) {
 		std::cout << e.what() << std::endl;
 	}
-	catch (Form::GradeTooHighException &e) {
+	catch (AForm::GradeTooHighException &e) {
 		std::cout << e.what() << std::endl;
 	}
-	std::cout << std::endl;
-	try {
-		Form form("A38", 0, 3);
-	}
-	catch (Form::GradeTooLowException &e) {
-		std::cout << e.what() << std::endl;
-	}
-	catch (Form::GradeTooHighException &e) {
+	catch (AForm::NotSigned &e) {
 		std::cout << e.what() << std::endl;
 	}
 }

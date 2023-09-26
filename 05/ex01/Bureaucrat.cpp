@@ -52,12 +52,17 @@ void Bureaucrat::decrement() {
 
 void Bureaucrat::signForm(Form *form) {
 
-	if (form->getIsSigned() == 1)
+	if (form->getIsSigned())
 		std::cout << this->name << " can't sign " << form->getName()
 				<< " because it's already signed." << std::endl;
-	else if (this->grade <= form->getGradeToSign())
+	else if (this->grade >= form->getGradeToSign())
 	std::cout << this->name << " signed " << form->getName()
 			<< "because is grade is too low." << std::endl;
+	else
+	{
+		std::cout << this->name << " signed " << form->getName() << std::endl;
+		form->beSigned(this);
+	}
 }
 
 Bureaucrat &Bureaucrat::operator=(const Bureaucrat &other) {

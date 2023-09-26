@@ -9,14 +9,14 @@
 /*   Updated: 2023/08/23 16:40:00 by mthibaul         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
-#ifndef FORM_HPP
-# define FORM_HPP
+#ifndef AFORM_HPP
+# define AFORM_HPP
 
 # include "Bureaucrat.hpp"
 
 class Bureaucrat;
 
-class Form {
+class AForm {
 
 	private:
 
@@ -27,25 +27,27 @@ class Form {
 
 	public:
 
-	Form(void);
-	Form(std::string name, int grSign, int grExec);
-	Form(const Form &other);
-	virtual ~Form(void);
+	AForm(void);
+	AForm(std::string name, int grSign, int grExec);
+	AForm(const AForm &other);
+	virtual ~AForm(void);
 
 	std::string getName() const;
 	int 		getGradeToSign() const;
 	int 		getGradeToExec() const;
 	bool		getIsSigned() const;
-	virtual void	beSigned(Bureaucrat *b);
+	void		beSigned(Bureaucrat *b);
+	void		execute(Bureaucrat const &executor) const;
+	virtual void	doExecution() const;
 
-	Form &operator=(const Form &other);
+	AForm &operator=(const AForm &other);
 
 	class	GradeTooHighException : public std::exception {
 
 	public:
 
 		const char *what() const throw() {
-			return ("Error : form's grade is too high !");
+			return ("Error : bureaucrat's grade is too high !");
 		}
 	};
 
@@ -54,11 +56,20 @@ class Form {
 	public:
 
 		const char *what() const throw() {
-			return ("Error : form's grade is too low !");
+			return ("Error : bureaucrat's grade is too low !");
+		}
+	};
+
+	class	NotSigned : public std::exception {
+
+	public:
+
+		const char *what() const throw() {
+			return ("The form is not signed");
 		}
 	};
 };
 
-std::ostream	&operator<<(std::ostream &os, Form const &form);
+std::ostream	&operator<<(std::ostream &os, AForm const &form);
 
 #endif

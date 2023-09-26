@@ -23,7 +23,9 @@ int	main() {
 		std::cout << b << std::endl;
 		std::cout << form << std::endl;
 
+		a.signForm(&form);
 		form.beSigned(&a);
+		a.signForm(&form);
 		std::cout << std::endl;
 		form.beSigned(&b);
 	}
