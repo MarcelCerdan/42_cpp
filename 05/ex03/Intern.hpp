@@ -1,31 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
+/*   Intern.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mthibaul <mthibaul@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/26 17:17:00 by mthibaul          #+#    #+#             */
-/*   Updated: 2023/09/26 17:17:00 by mthibaul         ###   ########lyon.fr   */
+/*   Created: 2023/09/26 17:57:00 by mthibaul          #+#    #+#             */
+/*   Updated: 2023/09/26 17:57:00 by mthibaul         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
-#ifndef ROBOTOMYREQUESTFORM_HPP
-# define ROBOTOMYREQUESTFORM_HPP
+#ifndef INTERN_HPP
+# define INTERN_HPP
 
 #include "AForm.hpp"
-#include <stdlib.h>
+#include "PresidentialPardonForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "ShrubberyCreationForm.hpp"
 
-class RobotomyRequestForm : public AForm {
+class Intern {
 
 public:
-	RobotomyRequestForm(void);
-	RobotomyRequestForm(std::string target);
-	RobotomyRequestForm(const RobotomyRequestForm &other);
-	~RobotomyRequestForm(void);
-	RobotomyRequestForm &operator=(const RobotomyRequestForm &other);
+	Intern(void);
+	Intern(const Intern &other);
+	~Intern(void);
 
-	void	doExecution() const;
+	AForm *makeForm(std::string name, std::string target) const;
 
+	Intern &operator=(const Intern &other);
 };
 
 #endif
