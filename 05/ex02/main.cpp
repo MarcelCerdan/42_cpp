@@ -29,8 +29,8 @@ int	main() {
 		std::cout << std::endl;
 
 		form = new RobotomyRequestForm("Francis");
-		//a.signForm(form);
-		form->execute(a);
+		a.signForm(form);
+		a.executeForm(form);
 		delete form;
 
 		std::cout << std::endl;
