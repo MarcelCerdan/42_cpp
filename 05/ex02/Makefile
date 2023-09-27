@@ -30,7 +30,7 @@ DEPS		=	$(OBJS:.o=.d)
 
 # ---- Compilation ---- #
 
-CC		=	g++
+CC		=	c++
 CFLAGS	=	-Wall -Wextra -Werror -std=c++98
 
 # ---- Commands ---- #

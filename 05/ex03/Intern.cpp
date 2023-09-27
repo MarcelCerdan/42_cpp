@@ -23,12 +23,16 @@ Intern::~Intern(void) {return ;}
 AForm *Intern::makeForm(std::string name, std::string target) const {
 
 	std::string forms[3] = {"presidential pardon", "robotomy request", "shrubbery creation"};
-	int 		grades[6] = {25, 72, 145, 5, 45, 137};
+	AForm		*aforms[3] = {new PresidentialPardonForm(name, target), new RobotomyRequestForm(name, target), new ShrubberyCreationForm(name, target)};
 	
 	for (int i = 0; i < 3; i++)
 	{
 		if (forms[i] == name)
-			return (new AForm(name, target, grades[i], grades[i + 3]));
+		{
+			delete (aforms[(i + 1) % 3]);
+			delete(aforms[(i + 2) % 3]);
+			return (aforms[i]);
+		}
 	}
 	std::cout << "The form's name is incorrect." << std::endl;
 	return (NULL);

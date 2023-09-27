@@ -23,21 +23,27 @@ int	main() {
 		Intern i;
 		AForm *form;
 
-		form = i.makeForm("shruberry creation", "Oui");
-		a.signForm(form);
-		form->execute(a);
+		form = i.makeForm("shrubbery creation", "./here");
+		if (form)
+		{
+			a.signForm(form);
+			form->execute(a);
+		}
 		delete form;
 
 		std::cout << std::endl;
 
-		form = new RobotomyRequestForm("Francis");
-		a.signForm(form);
-		a.executeForm(form);
+		form = i.makeForm("robotomy request", "Bender");
+		if (form)
+		{
+			a.signForm(form);
+			form->execute(a);
+		}
 		delete form;
 
 		std::cout << std::endl;
 
-		form = new PresidentialPardonForm("Bruce Wayne");
+		form = new PresidentialPardonForm("President", "Bruce Wayne");
 		a.signForm(form);
 		form->execute(b);
 		delete form;

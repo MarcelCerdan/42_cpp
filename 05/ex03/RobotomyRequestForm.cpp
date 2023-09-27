@@ -16,7 +16,7 @@ RobotomyRequestForm::RobotomyRequestForm(void): AForm("Robotomy", "Default", 72,
 	return ;
 }
 
-RobotomyRequestForm::RobotomyRequestForm(std::string target) : AForm("Robotomy", target, 72, 45){
+RobotomyRequestForm::RobotomyRequestForm(std::string name, std::string target) : AForm(name, target, 72, 45){
 
 	return ;
 }

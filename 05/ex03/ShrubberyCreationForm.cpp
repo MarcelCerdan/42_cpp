@@ -16,7 +16,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(void) : AForm("Shrubbery", "Default
 	return ;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("Shrubbery", target, 145, 137) {
+ShrubberyCreationForm::ShrubberyCreationForm(std::string name, std::string target) : AForm(name, target, 145, 137) {
 
 	return ;
 }
