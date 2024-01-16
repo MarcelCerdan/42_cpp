@@ -28,5 +28,6 @@ int main()
 
 	for (int j = 0; j < 100; j++)
 		delete animals[j];
+
 	return 0;
 }

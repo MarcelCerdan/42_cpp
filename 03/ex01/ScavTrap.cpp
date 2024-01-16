@@ -66,10 +66,10 @@ void	ScavTrap::guardGate() {
 
 	if (this->health > 0)
 		std::cout << "ScavTrap " << this->name
-				<< " is now in Gate keeper mode." << std::endl;
+				<< " is now in Guard keeper mode." << std::endl;
 	else
 		std::cout << "ScavTrap " << this->name
-				<< " is dead, he can't switch to Gurad keeper mode." << std::endl;
+				<< " is dead, he can't switch to Guard keeper mode." << std::endl;
 
 }
 

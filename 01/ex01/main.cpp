@@ -14,7 +14,7 @@
 
 int main() {
 
-	int n = 5;
+	int n = -5;
 	int i = 0;
 
 	Zombie*	zombies = zombieHorde(n, "Johnny");

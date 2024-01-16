@@ -28,7 +28,6 @@ Cat::Cat(Cat const &src) : Animal(src) {
 Cat::~Cat() {
 
 	std::cout << "Default Cat destructor called." << std::endl;
-	this->_brain = NULL;
 	delete this->_brain;
 }
 

@@ -1,35 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
+/*   BitcoinExchange.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mthibaul <mthibaul@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/08 16:37:44 by mthibaul          #+#    #+#             */
-/*   Updated: 2023/08/10 00:01:59 by mthibaul         ###   ########.fr       */
+/*   Created: 2024/01/16 12:29:00 by mthibaul          #+#    #+#             */
+/*   Updated: 2024/01/16 12:29:00 by mthibaul         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
+#ifndef BITCOINEXCHANGE_HPP
+# define BITCOINEXCHANGE_HPP
 
-#ifndef SCAVTRAP_H
-# define SCAVTRAP_H
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <map>
 
-# include "ClapTrap.hpp"
+class BitcoinExchange {
 
-class ScavTrap : public ClapTrap {
+private:
 
-	private:
+	std::map<std::string, float> _bitcoinData;
 
-	public:
+public:
 
-	ScavTrap();
-	ScavTrap(std::string const name);
-	ScavTrap(ScavTrap const &src);
-	~ScavTrap();
+	BitcoinExchange(void);
+	BitcoinExchange(const BitcoinExchange &other);
+	~BitcoinExchange(void);
+	BitcoinExchange &operator=(const BitcoinExchange &other);
 
-	ScavTrap &operator=(ScavTrap const &rhs);
+	void calculate(std::string date, double value);
 
-	void attack(const std::string &target);
-	void guardGate();
 
 };
 

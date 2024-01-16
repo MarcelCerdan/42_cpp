@@ -4,7 +4,7 @@
 
 # ---- Final Executable --- #
 
-NAME		=	fixed
+NAME		=	btc
 
 # ---- Directories ---- #
 
@@ -17,7 +17,7 @@ DIR_HEAD 	=	./
 # ---- Files ---- #
 
 SRCS_LST 	= 	main.cpp \
-				Fixed.cpp
+				BitcoinExchange.cpp
 
 OBJS 		= 	$(addprefix $(DIR_OBJS), $(SRCS_LST:.cpp=.o))
 
@@ -27,7 +27,7 @@ DEPS		=	$(OBJS:.o=.d)
 # ---- Compilation ---- #
 
 CC		=	c++
-CFLAGS	=	-Wall -Wextra -Werror -std=c++98
+CFLAGS	=	-Wall -Wextra -Werror #-std=c++98
 
 # ---- Commands ---- #
 
