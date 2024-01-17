@@ -15,6 +15,7 @@ void	doExchange(char *inputFileName);
 int		checkLine(std::size_t pos, std::string line);
 int		checkDate(std::string date);
 int		checkValue(std::string value);
+int		checkDateValidity(std::string date);
 
 int main(int ac, char **av)
 {
@@ -86,6 +87,11 @@ int	checkDate(std::string date)
 		return (1);
 	}
 	date.erase(10);
+	if (checkDateValidity(date))
+	{
+		std::cout << "Error : bad input => " << date << std::endl;
+		return (1);
+	}
 	for (std::size_t i = 0; i < date.size(); i++)
 	{
 		if (!isdigit(date[i]) && date[i] != '-')
@@ -114,5 +120,29 @@ int	checkValue(std::string value)
 		}
 	}
 
+	return (0);
+}
+
+int	checkDateValidity(std::string date)
+{
+	std::string year = date.substr(0, 4);
+	std::string month = date.substr(5, 2);
+	std::string day = date.substr(8, 2);
+
+
+	if (stoi(year) > 2024 || stoi(month) > 12 || stoi(day) > 31)
+		return (1);
+	if ((stoi(year) == 2024 && stoi(month) > 1) || (stoi(month) == 2 && stoi(day) > 29))
+		return (1);
+	for (int i = 0; i < 4; i++)
+	{
+		if (!isdigit(year[i]))
+			return (1);
+	}
+	for (int i = 0; i < 2; i++)
+	{
+		if (!isdigit(month[i]) || !isdigit(day[i]))
+			return (1);
+	}
 	return (0);
 }
