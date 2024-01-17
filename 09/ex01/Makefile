@@ -4,7 +4,7 @@
 
 # ---- Final Executable --- #
 
-NAME		=	btc
+NAME		=	RPN
 
 # ---- Directories ---- #
 
@@ -17,7 +17,7 @@ DIR_HEAD 	=	./
 # ---- Files ---- #
 
 SRCS_LST 	= 	main.cpp \
-				BitcoinExchange.cpp
+				RPN.cpp
 
 OBJS 		= 	$(addprefix $(DIR_OBJS), $(SRCS_LST:.cpp=.o))
 
