@@ -15,12 +15,11 @@
 #include <iostream>
 #include <stack>
 #include <string>
-#include <algorithm>
 
 class RPN {
 
 private:
-	std::stack<char> _stack;
+	std::stack<int> _stack;
 
 public:
 	RPN(void);
@@ -29,8 +28,9 @@ public:
 	~RPN(void);
 	RPN &operator=(const RPN &other);
 
-	void	calculate(void);
 
 };
+
+bool	isOperator(const char c);
 
 #endif

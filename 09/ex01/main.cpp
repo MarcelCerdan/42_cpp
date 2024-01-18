@@ -21,5 +21,4 @@ int main(int ac, char **av)
 
 	std::string expression = av[1];
 	RPN rpn(expression);
-	rpn.calculate();
 }
