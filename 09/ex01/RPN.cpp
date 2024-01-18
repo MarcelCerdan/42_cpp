@@ -17,9 +17,9 @@ RPN::RPN(std::string expression) {
 
 	for (int i = expression.size() - 1; i >= 0; i--)
 	{
-		if (expression.find_first_of("+-/*", i, 1) == std::string::npos && !isdigit(expression[i]) && expression[i] != ' ')
+		if (expression[i] != '+' && expression[i] != '-' && expression[i] != '/' && expression[i] != '*' && !isdigit(expression[i]) && expression[i] != ' ')
 		{
-			std::cout << "Please input a valid inverted Polish mathematical expression" << std::endl;
+			std::cout << i << "  Please input a valid inverted Polish mathematical expression" << std::endl;
 			exit (1);
 		}
 
