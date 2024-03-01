@@ -20,10 +20,10 @@ class Form {
 
 	private:
 
-	std::string	const name;
-	bool		isSigned;
-	int const	gradeToSign;
-	int const	gradeToExecute;
+	std::string	const _name;
+	bool		_isSigned;
+	int const	_gradeToSign;
+	int const	_gradeToExecute;
 
 	public:
 

@@ -11,13 +11,13 @@
 /* ************************************************************************** */
 #include "Form.hpp"
 
-Form::Form(void) : name("A38 pass"), isSigned(false), gradeToSign(150), gradeToExecute(150) {
+Form::Form(void) : _name("A38 pass"), _isSigned(false), _gradeToSign(150), _gradeToExecute(150) {
 
 	return ;
 }
 
-Form::Form(std::string name, int grSign, int grExec) : name(name), isSigned(false),
-	gradeToSign(grSign), gradeToExecute(grExec) {
+Form::Form(std::string name, int grSign, int grExec) : _name(name), _isSigned(false),
+	_gradeToSign(grSign), _gradeToExecute(grExec) {
 
 	if (grSign > 150 || grExec > 150)
 		throw GradeTooLowException();
@@ -25,38 +25,40 @@ Form::Form(std::string name, int grSign, int grExec) : name(name), isSigned(fals
 		throw GradeTooHighException();
 }
 
-Form::Form(const Form &other) : gradeToSign(other.gradeToSign), gradeToExecute(other.gradeToExecute){
+Form::Form(const Form &other) : _name(other._name), _gradeToSign(other._gradeToSign), _gradeToExecute(other._gradeToExecute) {
 
+	_isSigned = false;
 	*this = other;
 }
 
 Form::~Form(void) { return ; }
 
 std::string Form::getName() const {
-	return (this->name);
+	return (_name);
 }
 
 int Form::getGradeToSign() const {
-	return (this->gradeToSign);
+	return (_gradeToSign);
 }
 
 int Form::getGradeToExec() const {
-	return (this->gradeToExecute);
+	return (_gradeToExecute);
 }
 
 bool Form::getIsSigned() const {
-	return (this->isSigned);
+	return (_isSigned);
 }
 
 void Form::beSigned(Bureaucrat *b) {
 
-	if (b->getGrade() <= this->gradeToSign)
-		this->isSigned = true;
+	if (b->getGrade() <= _gradeToSign)
+		_isSigned = true;
 	else
 		throw GradeTooLowException();
 }
 
 Form &Form::operator=(const Form &other) {
+
 	(void)other;
 	return (*this);
 }

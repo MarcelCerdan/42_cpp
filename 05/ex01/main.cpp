@@ -18,16 +18,18 @@ int	main() {
 		Bureaucrat a("Michel", 10);
 		Bureaucrat b("Bob", 140);
 		Form form("A38", 15, 3);
+		Form form2 = form;
 
 		std::cout << a << std::endl;
 		std::cout << b << std::endl;
 		std::cout << form << std::endl;
 
 		a.signForm(&form);
-		form.beSigned(&a);
 		a.signForm(&form);
+
 		std::cout << std::endl;
-		form.beSigned(&b);
+
+		b.signForm(&form2);
 	}
 	catch (Form::GradeTooLowException &e) {
 		std::cout << e.what() << std::endl;
@@ -35,7 +37,9 @@ int	main() {
 	catch (Form::GradeTooHighException &e) {
 		std::cout << e.what() << std::endl;
 	}
+
 	std::cout << std::endl;
+
 	try {
 		Form form("A38", 0, 3);
 	}

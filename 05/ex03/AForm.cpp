@@ -25,8 +25,9 @@ AForm::AForm(std::string name, std::string target, int grSign, int grExec) : nam
 		throw GradeTooHighException();
 }
 
-AForm::AForm(const AForm &other) : gradeToSign(other.gradeToSign), gradeToExecute(other.gradeToExecute){
+AForm::AForm(const AForm &other) : name(other.name), gradeToSign(other.gradeToSign), gradeToExecute(other.gradeToExecute){
 
+	isSigned = false;
 	*this = other;
 }
 

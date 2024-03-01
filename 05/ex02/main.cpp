@@ -23,12 +23,12 @@ int	main() {
 
 		form = new ShrubberyCreationForm("./here");
 		a.signForm(form);
-		form->execute(a);
+		a.executeForm(form);
 		delete form;
 
 		std::cout << std::endl;
 
-		form = new RobotomyRequestForm("Francis");
+		form = new RobotomyRequestForm("Titouan");
 		a.signForm(form);
 		a.executeForm(form);
 		delete form;
@@ -37,7 +37,28 @@ int	main() {
 
 		form = new PresidentialPardonForm("Bruce Wayne");
 		a.signForm(form);
-		form->execute(b);
+		b.executeForm(form);
+		delete form;
+	}
+	catch (AForm::GradeTooLowException &e) {
+		std::cout << e.what() << std::endl;
+	}
+	catch (AForm::GradeTooHighException &e) {
+		std::cout << e.what() << std::endl;
+	}
+	catch (AForm::NotSigned &e) {
+		std::cout << e.what() << std::endl;
+	}
+
+	std::cout << std::endl;
+
+	try {
+		Bureaucrat a("Michel", 10);
+		AForm *form;
+
+		form = new PresidentialPardonForm("Bruce Wayne");
+		a.signForm(form);
+		a.executeForm(form);
 		delete form;
 	}
 	catch (AForm::GradeTooLowException &e) {

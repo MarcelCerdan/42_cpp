@@ -25,7 +25,9 @@ int	main() {
 	catch (Bureaucrat::GradeTooHighException &e) {
 		std::cout << e.what() << std::endl;
 	}
+
 	std::cout << std::endl;
+
 	try {
 		Bureaucrat a("Michel", 15);
 		Bureaucrat b("Bob", 165);
@@ -39,7 +41,9 @@ int	main() {
 		std::cout << e.what() << std::endl;
 
 	}
+
 	std::cout << std::endl;
+
 	try {
 		Bureaucrat a("Michel", 15);
 		Bureaucrat b("Bob", 140);

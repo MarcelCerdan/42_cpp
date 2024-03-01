@@ -67,9 +67,15 @@ void AForm::beSigned(Bureaucrat *b) {
 void AForm::execute(const Bureaucrat &executor) const {
 
 	if (!this->isSigned)
+	{
+		delete this;
 		throw NotSigned();
+	}
 	else if (executor.getGrade() > this->gradeToExecute)
+	{
+		delete this;
 		throw GradeTooLowException();
+	}
 	else
 		this->doExecution();
 }

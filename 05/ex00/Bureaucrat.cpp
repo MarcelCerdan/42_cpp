@@ -11,16 +11,16 @@
 /* ************************************************************************** */
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat() : name("Karen"), grade(150) { return ; }
+Bureaucrat::Bureaucrat() : _name("Karen"), _grade(150) { return ; }
 
-Bureaucrat::Bureaucrat(std::string name, int grade) : name(name) {
+Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name) {
 
 	if (grade > 150)
 		throw GradeTooLowException();
 	else if (grade < 1)
 		throw GradeTooHighException();
 	else
-		this->grade = grade;
+		_grade = grade;
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat &other) {
@@ -32,28 +32,28 @@ Bureaucrat::~Bureaucrat() { return ; }
 
 std::string Bureaucrat::getName() const {
 
-	return (this->name);
+	return (this->_name);
 }
 
 int Bureaucrat::getGrade() const {
 
-	return (this->grade);
+	return (this->_grade);
 }
 
 void Bureaucrat::increment() {
 
-	this->grade--;
+	_grade--;
 }
 
 void Bureaucrat::decrement() {
 
-	this->grade++;
+	_grade++;
 }
 
 Bureaucrat &Bureaucrat::operator=(const Bureaucrat &other) {
 
 	if (this != &other)
-		this->grade = other.grade;
+		this->_grade = other._grade;
 	return (*this);
 }
 
