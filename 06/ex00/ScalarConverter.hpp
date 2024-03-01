@@ -26,6 +26,8 @@ class ScalarConverter {
 
 	private:
 
+	ScalarConverter();
+	ScalarConverter(ScalarConverter const &src);
 	static void	convertToChar(const double conversion, bool canConvert);
 	static void	convertToInt(const double conversion, bool canConvert);
 	static void	convertToFloat(const double conversion, bool canConvert);
@@ -33,8 +35,6 @@ class ScalarConverter {
 
 	public:
 
-	ScalarConverter();
-	ScalarConverter(ScalarConverter const &src);
 	~ScalarConverter();
 
 	ScalarConverter &operator=(ScalarConverter const &rhs);

@@ -19,5 +19,6 @@ int main(int ac, char **av) {
 		std::cerr << "Wrong number of arguments" << std::endl;
 		return (1);
 	}
+
 	ScalarConverter::convert(av[1]);
 }

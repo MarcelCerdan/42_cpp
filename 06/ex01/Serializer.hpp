@@ -20,12 +20,11 @@ class Serializer {
 
 	private:
 
-	
+	Serializer();
+	Serializer(Serializer const &src);
 
 	public:
 
-	Serializer();
-	Serializer(Serializer const &src);
 	~Serializer();
 
 	Serializer &operator=(Serializer const &rhs);
