@@ -6,9 +6,10 @@
 /*   By: mthibaul <mthibaul@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 17:29:00 by mthibaul          #+#    #+#             */
-/*   Updated: 2024/01/17 17:29:00 by mthibaul         ###   ########lyon.fr   */
+/*   Updated: 2024/05/16 15:36:49 by mthibaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "RPN.hpp"
 
 RPN::RPN(void) {}
@@ -20,17 +21,17 @@ RPN::RPN(std::string expression) {
 		std::string token = expression.substr(i, 1);
 		if (!isOperator(expression[i]) && !isdigit(expression[i]) && token != " ")
 		{
-			std::cout << "Please input a valid inverted Polish mathematical expression" << std::endl;
+			std::cout << "Please input a valid inverted Polish mathematical expression." << std::endl;
 			exit (1);
 		}
 
 		if (!isOperator(expression[i]) && token != " ")
-			_stack.push(stoi(token));
+			_stack.push(atoi(token.c_str()));
 		else if (token != " ")
 		{
 			if (_stack.size() < 2)
 			{
-				std::cout << "Not enough numbers to do the operation" << std::endl;
+				std::cout << "Not enough numbers to do the operation." << std::endl;
 				exit (1);
 			}
 
@@ -38,13 +39,15 @@ RPN::RPN(std::string expression) {
 			_stack.pop();
 			int nmb1 = _stack.top();
 			_stack.pop();
+			int result = 0;
 
+			
 			if (token == "+")
-				_stack.push(nmb1 + nmb2);
+				result = nmb1 + nmb2;
 			else if (token == "-")
-				_stack.push(nmb1 - nmb2);
+				result = nmb1 - nmb2;
 			else if (token == "*")
-				_stack.push(nmb1 * nmb2);
+				result = nmb1 * nmb2;
 			else if (token == "/")
 			{
 				if (nmb2 == 0)
@@ -52,8 +55,15 @@ RPN::RPN(std::string expression) {
 					std::cout << "Error : division by 0" << std::endl;
 					exit (1);
 				}
-				_stack.push(nmb1 / nmb2);
+				result = nmb1 / nmb2;
 			}
+			
+			if (result - nmb1 != nmb2 && result + nmb2 != nmb1 && result * nmb2 != nmb1 && ((nmb2 != 0 && result / nmb2 != nmb1) || (nmb1 != 0 && result / nmb1 != nmb2)))
+			{
+				std::cout << "Error : result is within the range of an int" << std::endl;
+				exit (1);
+			}
+			_stack.push(result);
 		}
 	}
 	if (_stack.size() > 1)

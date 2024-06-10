@@ -6,12 +6,14 @@
 /*   By: mthibaul <mthibaul@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 15:28:00 by mthibaul          #+#    #+#             */
-/*   Updated: 2024/01/18 15:28:00 by mthibaul         ###   ########lyon.fr   */
+/*   Updated: 2024/05/16 15:44:37 by mthibaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #ifndef PMERGEME_HPP
 # define PMERGEME_HPP
 
+#include <sys/time.h> 
 #include <vector>
 #include <algorithm>
 #include <iostream>

@@ -6,12 +6,14 @@
 /*   By: mthibaul <mthibaul@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 12:29:00 by mthibaul          #+#    #+#             */
-/*   Updated: 2024/01/16 12:29:00 by mthibaul         ###   ########lyon.fr   */
+/*   Updated: 2024/05/16 13:30:53 by mthibaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #ifndef BITCOINEXCHANGE_HPP
 # define BITCOINEXCHANGE_HPP
 
+#include <cstdlib>
 #include <iostream>
 #include <fstream>
 #include <string>

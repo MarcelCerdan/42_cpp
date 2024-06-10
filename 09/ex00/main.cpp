@@ -6,9 +6,10 @@
 /*   By: mthibaul <mthibaul@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 13:21:00 by mthibaul          #+#    #+#             */
-/*   Updated: 2024/01/16 13:21:00 by mthibaul         ###   ########lyon.fr   */
+/*   Updated: 2024/05/16 15:09:04 by mthibaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "BitcoinExchange.hpp"
 
 void	doExchange(char *inputFileName);
@@ -49,7 +50,9 @@ void	doExchange(char *inputFileName)
 		{
 			try {
 				std::string date = line.substr(0, pos - 1);
-				float value = std::stof(line.substr(pos + 2));
+				float value = strtod(line.substr(pos + 2).c_str(), NULL);
+				if (value > 1000)
+					throw std::out_of_range("number too large");
 				bitcoinExchange.calculate(date, value);
 			}
 			catch (const std::out_of_range& oor) {
@@ -64,7 +67,7 @@ int checkLine(std::size_t pos, std::string line)
 {
 	if (pos == std::string::npos)
 	{
-		std::cout << "Error : no value indicated" << std::endl;
+		std::cout << "Error : line is empty" << std::endl;
 		return (1);
 	}
 
@@ -72,6 +75,11 @@ int checkLine(std::size_t pos, std::string line)
 	if (date == "date " || checkDate(date) != 0)
 		return (1);
 
+	if (line.size() <= pos + 2)
+	{
+		std::cout << "Error : no value indicated" << std::endl;
+		return (1);
+	}
 	std::string value = line.substr(pos + 2);
 	if (checkValue(value) != 0)
 		return (1);
@@ -81,22 +89,22 @@ int checkLine(std::size_t pos, std::string line)
 
 int	checkDate(std::string date)
 {
-	if (date.size() != 11 || date.back() != ' ')
+	if (date.size() != 11 || date[date.size() - 1] != ' ')
 	{
-		std::cout << "Error : bad input => " << date << std::endl;
+		std::cout << "Error : bad input => \" " << date << " \"" << std::endl;
 		return (1);
 	}
 	date.erase(10);
 	if (checkDateValidity(date))
 	{
-		std::cout << "Error : bad input => " << date << std::endl;
+		std::cout << "Error : bad input => \" " << date << " \"" << std::endl;
 		return (1);
 	}
 	for (std::size_t i = 0; i < date.size(); i++)
 	{
 		if (!isdigit(date[i]) && date[i] != '-')
 		{
-			std::cout << "Error : bad input => " << date << std::endl;
+			std::cout << "Error : bad input => \" " << date << " \"" << std::endl;
 			return (1);
 		}
 	}
@@ -105,7 +113,7 @@ int	checkDate(std::string date)
 
 int	checkValue(std::string value)
 {
-	if (value[0] == '-')
+	if (value[0] == '-' || value.size() <= 0)
 	{
 		std::cout << "Error : not a positive number" << std::endl;
 		return (1);
@@ -115,7 +123,7 @@ int	checkValue(std::string value)
 	{
 		if (!isdigit(value[i]) && value[i] != '.')
 		{
-			std::cout << "Error : bad input => " << value << std::endl;
+			std::cout << "Error : bad input => \" " << value << " \"" << std::endl;
 			return (1);
 		}
 	}
@@ -125,14 +133,18 @@ int	checkValue(std::string value)
 
 int	checkDateValidity(std::string date)
 {
-	std::string year = date.substr(0, 4);
-	std::string month = date.substr(5, 2);
-	std::string day = date.substr(8, 2);
+	std::string year_str = date.substr(0, 4);
+	std::string month_str = date.substr(5, 2);
+	std::string day_str = date.substr(8, 2);
+
+	const char *year = year_str.c_str();
+	const char *month = month_str.c_str();
+	const char *day = day_str.c_str();
 
 
-	if (stoi(year) > 2024 || stoi(month) > 12 || stoi(day) > 31)
+	if (atoi(year) > 2024 || atoi(month) > 12 || atoi(day) > 31 || atoi(month) < 1 || atoi(day) < 1)
 		return (1);
-	if ((stoi(year) == 2024 && stoi(month) > 1) || (stoi(month) == 2 && stoi(day) > 29))
+	if ((atoi(year) == 2024 && atoi(month) > 4) || (atoi(month) == 2 && atoi(day) > 29))
 		return (1);
 	for (int i = 0; i < 4; i++)
 	{

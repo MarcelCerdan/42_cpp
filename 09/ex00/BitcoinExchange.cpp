@@ -6,9 +6,10 @@
 /*   By: mthibaul <mthibaul@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 12:29:00 by mthibaul          #+#    #+#             */
-/*   Updated: 2024/01/16 12:29:00 by mthibaul         ###   ########lyon.fr   */
+/*   Updated: 2024/05/16 13:48:15 by mthibaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "BitcoinExchange.hpp"
 
 BitcoinExchange::BitcoinExchange(void) {
@@ -50,6 +51,7 @@ void BitcoinExchange::calculate(std::string date, double value) {
 	std::map<std::string, float>::iterator lower;
 
 	lower = _bitcoinData.lower_bound(date);
+	--lower;
 
 	float result = lower->second * value;
 	std::cout << date << " => " << value << " = " << result << std::endl;

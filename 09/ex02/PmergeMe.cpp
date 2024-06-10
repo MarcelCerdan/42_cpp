@@ -6,9 +6,10 @@
 /*   By: mthibaul <mthibaul@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 15:28:00 by mthibaul          #+#    #+#             */
-/*   Updated: 2024/01/18 15:28:00 by mthibaul         ###   ########lyon.fr   */
+/*   Updated: 2024/05/16 15:41:14 by mthibaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "PmergeMe.hpp"
 
 std::vector<int>	generateJacobsthalNmb(int n)
