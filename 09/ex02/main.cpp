@@ -6,7 +6,7 @@
 /*   By: mthibaul <mthibaul@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 12:21:00 by mthibaul          #+#    #+#             */
-/*   Updated: 2024/05/16 15:47:33 by mthibaul         ###   ########.fr       */
+/*   Updated: 2024/06/10 15:29:07 by mthibaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 int main(int ac, char **av)
 {
+	double time = 0;
+
 	if (ac < 2)
 	{
 		std::cout << "Wrong number of arguments" << std::endl;
 		return (1);
 	}
 
-	clock_t	start_t;
-	clock_t	end_t;
 	std::vector<int>	vecSequence;
 	std::deque<int>		dequeSequence;
 
@@ -41,20 +41,13 @@ int main(int ac, char **av)
 
 	std::cout << "before : ";
 	::printContainer(vecSequence);
-
-	start_t = clock();
-	::sortSequence(vecSequence);
-	end_t = clock();
-	double time = static_cast<double>(end_t - start_t);
+	time = ::sortSequence(vecSequence) / 1000;
 	std::cout << "after : ";
 	::printContainer(vecSequence);
 	std::cout << "Time to process a range of " << ac - 1 << " elements with std::vector : " << time << " us" << std::endl;
 
-	start_t = clock();
-	::sortSequence(dequeSequence);
-	end_t = clock();
-	double time2 = static_cast<double>(end_t - start_t);
-	std::cout << "Time to process a range of " << ac - 1 << " elements with std::deque : " << time2 << " us" << std::endl;
+	time = ::sortSequence(dequeSequence) / 1000;
+	std::cout << "Time to process a range of " << ac - 1 << " elements with std::deque : " << time << " us" << std::endl;
 
 	return (0);
 }

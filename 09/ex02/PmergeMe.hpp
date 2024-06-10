@@ -6,7 +6,7 @@
 /*   By: mthibaul <mthibaul@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 15:28:00 by mthibaul          #+#    #+#             */
-/*   Updated: 2024/05/16 15:44:37 by mthibaul         ###   ########.fr       */
+/*   Updated: 2024/06/10 15:29:13 by mthibaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@
 #include <cstdlib>
 #include <deque>
 #include <iterator>
-#include <list>
 #include <ctime>
 
 std::vector<int>	generateJacobsthalNmb(int n);
@@ -30,22 +29,22 @@ std::vector<int>	generateModifiedJacobsthalNmb(int n);
 template <typename T>
 void	printContainer(T &container)
 {
-	for (typename T::iterator i = container.begin(); i != container.end(); i++)
+	for (typename T::iterator i = container.begin(); i != container.end() - 1; ++i)
 		std::cout << *i << " ";
 	std::cout << std::endl;
 }
 
 template <typename T>
-void	binaryInsert(std::vector<T>& vec, const T& val)
+void	binaryInsert(T &vec, int val)
 {
-	typename std::vector<T>::iterator it = vec.begin();
+	typename T::iterator it = vec.begin();
 	while (it != vec.end() && *it != val)
 		++it;
 	vec.insert(it, val);
 }
 
 template <typename T>
-int	doPairs(T &container, std::vector<int> &A, std::vector<int> &B)
+int	doPairs(T &container, T &A, T &B)
 {
 	int odd;
 
@@ -70,17 +69,19 @@ int	doPairs(T &container, std::vector<int> &A, std::vector<int> &B)
 }
 
 template <typename T>
-void	sortSequence(T &container)
+double	sortSequence(T &container)
 {
-	if (container.size() <= 1)
-		return ;
+	clock_t	start_t;
+	clock_t	end_t;
 
-	std::vector<int>	A;
-	std::vector<int>	B;
+	start_t = clock();
+	if (container.size() <= 1)
+		return (clock() - start_t);
+
+	T	A;
+	T	B;
 	int odd = doPairs(container, A, B);
 
-	std::sort(A.begin(), A.end());
-	std::sort(B.begin(), B.end());
 	size_t	n = B.size() + 1;
 	std::vector<int> jacobsthalNmb = generateModifiedJacobsthalNmb(n);
 
@@ -100,6 +101,8 @@ void	sortSequence(T &container)
 	}
 	container.clear();
 	container.insert(container.end(), A.begin(), A.end());
+	end_t = clock();
+	return (end_t - start_t);
 }
 
 
